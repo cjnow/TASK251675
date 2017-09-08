@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="automation_category" table="x_qune_da_automation_rule" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>automation_category</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>QuickNexus</label>
+            <language>en</language>
+            <name>x_qune_da_automation_rule</name>
+            <sequence>10</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-08-05 03:49:12</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>81c8a903dbd44300799d540adc96193f</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-08-05 03:49:20</sys_updated_on>
+            <value>quicknexus</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>automation_category</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>QuickNexus + Customer</label>
+            <language>en</language>
+            <name>x_qune_da_automation_rule</name>
+            <sequence>20</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-08-05 03:49:32</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1bc86d8fdb944300799d540adc9619dc</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-08-05 03:49:43</sys_updated_on>
+            <value>quicknexus_customer</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>automation_category</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Customer</label>
+            <language>en</language>
+            <name>x_qune_da_automation_rule</name>
+            <sequence>30</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-08-05 03:49:50</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>98e821cfdb944300799d540adc96193c</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-08-05 03:49:55</sys_updated_on>
+            <value>customer</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>automation_category</element>
+            <name>x_qune_da_automation_rule</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-08-05 03:49:12</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>5bc8e503dbd44300799d540adc96192b</sys_id>
+            <sys_mod_count>9</sys_mod_count>
+            <sys_name>automation_category</sys_name>
+            <sys_package display_value="Discovery Admin" source="x_qune_da">6a926b7edb144300799d540adc961933</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Discovery Admin">6a926b7edb144300799d540adc961933</sys_scope>
+            <sys_update_name>sys_choice_x_qune_da_automation_rule_automation_category</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-08-05 03:49:55</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

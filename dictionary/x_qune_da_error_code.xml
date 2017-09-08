@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element attributes="update_synch=true" extends="sys_metadata" label="Error Code" max_length="40" name="x_qune_da_error_code" type="collection">
+        <element hint="Determines if this record is Active or not." label="Active" max_length="40" name="active" type="boolean"/>
+        <element choice="1" hint="Captures the Discovery Phase the Error Code belongs to." label="Discovery Phase" mandatory="true" max_length="40" name="discovery_phase" type="choice">
+            <choice>
+                <element label="Phase 0: No Ping" sequence="10" value="phase_0"/>
+                <element label="Phase 1: Port Scan" sequence="20" value="phase_1"/>
+                <element label="Phase 2: Classification" sequence="30" value="phase_2"/>
+                <element label="Phase 3: Identification" sequence="40" value="phase_3"/>
+                <element label="Phase 4: Exploration" sequence="50" value="phase_4"/>
+            </choice>
+        </element>
+        <element display="true" hint="Captures the Error Code." label="Error Code" mandatory="true" max_length="100" name="error_code" type="string"/>
+        <element hint="Captures the remediation of the Error Code, which gets populated in the generated incident." label="Remediation" mandatory="true" max_length="4000" name="remediation" type="string"/>
+        <element hint="Captures the root cause of the Error Code, which gets populated in the generated incident." label="Root Cause" mandatory="true" max_length="1000" name="root_cause" type="string"/>
+        <element hint="Captures the team responsible for the Error Code remediation, which gets populated in the generated incident." label="Team Responsible" mandatory="true" max_length="100" name="team_responsible" type="string"/>
+        <index name="index">
+            <element name="error_code"/>
+        </index>
+    </element>
+</database>

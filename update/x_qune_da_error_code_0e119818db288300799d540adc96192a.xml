@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="x_qune_da_error_code">
+    <x_qune_da_error_code action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <discovery_phase>phase_2</discovery_phase>
+        <error_code>P2.WMI.04</error_code>
+        <remediation>Open DCOM Ports on Device.&#13;
+About DCOM: DCOM (Distributed Component Object Model) is a framework used by Windows to allow COM components to work over the network. Unlike your traditional TCP/IP and UDP/IP services where a single protocol has a fixed port DCOM dynamically assigns ports for the COM objects it remotes.&#13;
+WMI and Powershell access remote Windows machines on port 135 (RPC). For remote Windows machines where Windows Firewall is enabled, it is not enough just opening port 135 to have Discovery successfully discover the machine.&#13;
+When the MID server tries to access RPC on the remote server via 135, the remote machine announces a (dynamic) port that the MID server has to use in order to access DCOM back on the remote server. The port announced by the RPC Server on the remote machine is one of a range of ports (unless RPC is configured to run with a static port).&#13;
+The default ranges of DCOM ports are: &#13;
+from 1025 to 5000: Windows 2000, Windows XP and Windows Server 2003&#13;
+from 49152 to 65535: Windows Server 2008 and later versions, and in Windows Vista and later versions</remediation>
+        <root_cause>DCOM Ports are blocked on Device.</root_cause>
+        <sys_class_name>x_qune_da_error_code</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-08 18:41:22</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>0e119818db288300799d540adc96192a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>P2.WMI.04</sys_name>
+        <sys_package display_value="Discovery Admin" source="x_qune_da">6a926b7edb144300799d540adc961933</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Discovery Admin">6a926b7edb144300799d540adc961933</sys_scope>
+        <sys_update_name>x_qune_da_error_code_0e119818db288300799d540adc96192a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-08 18:41:22</sys_updated_on>
+        <team_responsible>Device Support Team</team_responsible>
+    </x_qune_da_error_code>
+</record_update>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="x_qune_da_ar_error_code_mapping">
+    <x_qune_da_ar_error_code_mapping action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <automation_category>quicknexus</automation_category>
+        <description>Apache-Get Proxy Modue</description>
+        <error_code display_value="P4.APPI.12.Apache">68608062db740b00799d540adc96193b</error_code>
+        <name>Apache proxy </name>
+        <order>11110</order>
+        <source>discovery_log_source=Discovery^ecc_queue_topic=SSHCommand^discovery_log_message=Exit status: 1^ecc_queue_nameLIKEsh ${file:get-proxy-info.sh} ${cfg_location}</source>
+        <sys_class_name>x_qune_da_ar_error_code_mapping</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-28 03:29:09</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>7690c862db740b00799d540adc961908</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Apache proxy </sys_name>
+        <sys_package display_value="Discovery Admin" source="x_qune_da">6a926b7edb144300799d540adc961933</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Discovery Admin">6a926b7edb144300799d540adc961933</sys_scope>
+        <sys_update_name>x_qune_da_ar_error_code_mapping_7690c862db740b00799d540adc961908</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-28 03:29:09</sys_updated_on>
+        <target>error_code</target>
+        <value>P4.APPI.12.Apache</value>
+    </x_qune_da_ar_error_code_mapping>
+</record_update>

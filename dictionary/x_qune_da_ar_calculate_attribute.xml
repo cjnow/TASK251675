@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element attributes="update_synch=true" extends="x_qune_da_automation_rule" label="AR-Calculate Attribute" max_length="40" name="x_qune_da_ar_calculate_attribute" type="collection"/>
+</database>

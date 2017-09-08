@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>active</field>
+        <global>true</global>
+        <messages/>
+        <name>Validate Incident Error Code</name>
+        <order/>
+        <script><![CDATA[function onSubmit() {
+   //Type appropriate comment here, and begin script below
+	var regExp=/^P[0-9][.]([A-Z]{4}|[A-Z]{3})[.][0-9]{2}/g; 
+	//alert(regExp);
+	var strIncidentErrorCode = g_form.getValue('incident_error_code');
+	
+	if (strIncidentErrorCode.match(regExp))
+		{
+			// alert('Matching with the pattern defined');
+		}
+	else
+		{
+			g_form.showFieldMsg('incident_error_code','Incorrect Format. Use: PN.XXXX.NN','error');
+			return false;
+		}
+   
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-05 19:17:45</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>a4fcbcd7db984300799d540adc9619c6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Validate Incident Error Code</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Discovery Admin" source="x_qune_da">6a926b7edb144300799d540adc961933</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Discovery Admin">6a926b7edb144300799d540adc961933</sys_scope>
+        <sys_update_name>sys_script_client_a4fcbcd7db984300799d540adc9619c6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-05 19:17:45</sys_updated_on>
+        <table>x_qune_da_incident_error_code</table>
+        <type>onSubmit</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

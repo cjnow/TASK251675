@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="x_qune_da_error_code">
+    <x_qune_da_error_code action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <discovery_phase>phase_2</discovery_phase>
+        <error_code>P2.SNMP.03</error_code>
+        <remediation>Troubleshoot the SNMP Device to determine why meaningful data isn't returned to the ServiceNow Probe. Minimum data needed to be returned (via ECC Queue) to classify SNMP Devices is sysName along with sysObjectID and/or sysDescr.</remediation>
+        <root_cause>Device is not returning any meaningful data to ServiceNow Probe.</root_cause>
+        <sys_class_name>x_qune_da_error_code</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-06 21:02:21</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>406e9eabdbdc4300799d540adc9619bb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>P2.SNMP.03</sys_name>
+        <sys_package display_value="Discovery Admin" source="x_qune_da">6a926b7edb144300799d540adc961933</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Discovery Admin">6a926b7edb144300799d540adc961933</sys_scope>
+        <sys_update_name>x_qune_da_error_code_406e9eabdbdc4300799d540adc9619bb</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-06 21:02:21</sys_updated_on>
+        <team_responsible>Device Support Team</team_responsible>
+    </x_qune_da_error_code>
+</record_update>

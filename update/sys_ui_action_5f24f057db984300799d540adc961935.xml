@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_ui_action">
+    <sys_ui_action action="INSERT_OR_UPDATE">
+        <action_name/>
+        <active>true</active>
+        <client>false</client>
+        <comments/>
+        <condition>current.status=='analysis_executed'</condition>
+        <form_action>true</form_action>
+        <form_button>false</form_button>
+        <form_context_menu>false</form_context_menu>
+        <form_link>true</form_link>
+        <hint/>
+        <list_action>false</list_action>
+        <list_banner_button>false</list_banner_button>
+        <list_button>false</list_button>
+        <list_choice>false</list_choice>
+        <list_context_menu>false</list_context_menu>
+        <list_link>false</list_link>
+        <list_save_with_form_button>false</list_save_with_form_button>
+        <name>Generate Incidents</name>
+        <onclick/>
+        <order>150</order>
+        <script><![CDATA[var gaDiscoveryLogAnalysis = new GlideAggregate('x_qune_da_log_analysis'); // UPDATE TABLE NAME
+
+var countIncidentsGenerated = 0;
+
+gaDiscoveryLogAnalysis.addQuery('troubleshooting',current.sys_id);
+gaDiscoveryLogAnalysis.groupBy('incident_error_code'); // Note: incident_error_code is used instead of error_code since incident_error_code adds additional granularity for assignments based on unique customer requirements.
+gaDiscoveryLogAnalysis.query();
+
+while (gaDiscoveryLogAnalysis.next()) { // Main Loop grouped by the Number of Unique Error Codes Generated
+
+	// var strErrorCode = gaDiscoveryLogAnalysis.error_code; // NOTE that this is empty as the groupby is by Incident Error Code, thus deriving via split(".");
+	var strIncidentErrorCode = gaDiscoveryLogAnalysis.incident_error_code;
+	var arrIncidentErrorCode = strIncidentErrorCode.split(".");
+	var strErrorCode = arrIncidentErrorCode[0] + "." + arrIncidentErrorCode[1] + "." + arrIncidentErrorCode[2]; // IMPORTANT: As this controls the type of Incident Error Code Format
+	
+	var arrDescription = []; // This Description is populated with Root Cause and Remediation from the Error Code Mapping Table and populates the Incident Description.
+	
+	// One time query to get reference to record for Error Code attributes
+	var grErrorCode = new GlideRecord('x_qune_da_error_code'); // UPDATE TABLE
+	grErrorCode.addActiveQuery();
+	grErrorCode.addQuery('error_code',strErrorCode);
+	grErrorCode.query();
+	grErrorCode.next(); // NO WHILE LOOP as there should be a unique value only
+		
+	// One time query to get reference to record for Incident Error Code attributes
+	var grIncidentErrorCode = new GlideRecord('x_qune_da_incident_error_code'); // UPDATE TABLE
+	grIncidentErrorCode.addActiveQuery();
+	grIncidentErrorCode.addQuery('incident_error_code',strIncidentErrorCode);
+	grIncidentErrorCode.query();
+	grIncidentErrorCode.next(); // NO WHILE LOOP as there should be a unique value only
+	// If this record is NULL, it means that there was no active Incident Error Code defined for the Error Code
+	
+	if (grIncidentErrorCode.incident_error_code) { // Only generate Incidents if the Incident Error Code Record is configured
+	
+		var intCount = 0; // Numbers the IP Addresses with the count of identified errors
+	
+		var grDiscoveryLogAnalysis = new GlideRecord('x_qune_da_log_analysis'); // UPDATE TABLE
+		grDiscoveryLogAnalysis.addQuery('incident_error_code',strIncidentErrorCode);
+		grDiscoveryLogAnalysis.addQuery('troubleshooting',current.sys_id);
+		grDiscoveryLogAnalysis.query();
+	
+		while (grDiscoveryLogAnalysis.next()) { // Main Loop to Analyze the Discovery Logs
+		
+			var arrIncidentErrorCodes = []; 
+		
+			if (strIncidentErrorCode == grDiscoveryLogAnalysis.incident_error_code) { 
+			
+				intCount++;
+						
+				var dnsName = grDiscoveryLogAnalysis.device_dns_name;
+				if (grDiscoveryLogAnalysis.device_dns_name == '') { 
+					dnsName = "no_dns_name_discovered";
+				}
+			
+				var strIncidentErrorCodeMessage = intCount + ". IP Address: " + grDiscoveryLogAnalysis.getDisplayValue('device_ip_address') + " (" + dnsName + ")\n";
+				arrIncidentErrorCodes.push(strIncidentErrorCodeMessage);
+
+			}
+		
+		var strIncidentErrorCodes = arrIncidentErrorCodes.join("");
+		arrDescription.push(strIncidentErrorCodes);
+		
+		}
+	
+		var strDescription = "The Devices below are not being discovered. The Discovery Troubleshooting Error Code associated with these devices is: " + strIncidentErrorCode + "\n\nTeam Responsible: " +  grErrorCode.team_responsible + "\n\nRoot Cause: \n" + grErrorCode.root_cause + "\n\nRemediation: \n" + grErrorCode.remediation + "\n\nThe following IP Addresses / Devices are affected and need your attention: \n" + arrDescription.join("");
+	
+		var strShortDescription = "Discovery Troubleshooting Error Code: " + strIncidentErrorCode; // Potential to further elaborate
+	
+		// Additional Variables from the Glide Record querying the table.
+	
+		var grIncident = new GlideRecord('incident');
+		grIncident.initialize();
+	
+		grIncident.short_description = strShortDescription;
+		grIncident.description = strDescription;
+		
+		grIncident.asssigned_to = grIncidentErrorCode.assigned_to;
+		grIncident.assignment_group = grIncidentErrorCode.assignment_group;
+		grIncident.category = grIncidentErrorCode.category;
+		grIncident.subcategory = grIncidentErrorCode.subcategory;
+		grIncident.impact = grIncidentErrorCode.impact;
+		grIncident.urgency = grIncidentErrorCode.urgency;
+		grIncident.business_service = grIncidentErrorCode.business_service;
+		grIncident.cmdb_ci = grIncidentErrorCode.configuration_item;
+		grIncident.caller_id = grIncidentErrorCode.caller;
+		grIncident.contact_type = grIncidentErrorCode.contact_type;
+		grIncident.priority = grIncidentErrorCode.priority;
+		grIncident.severity = grIncidentErrorCode.severity;
+
+	
+		grIncident.insert();
+		countIncidentsGenerated++;
+	}
+	
+}
+
+current.status = 'incidents_generated';
+current.update();
+action.setRedirectURL(current);
+gs.addInfoMessage(countIncidentsGenerated + " Incident(s) Generated");
+
+
+
+
+]]></script>
+        <show_insert>true</show_insert>
+        <show_multiple_update>false</show_multiple_update>
+        <show_query>false</show_query>
+        <show_update>true</show_update>
+        <sys_class_name>sys_ui_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-05 18:42:12</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>5f24f057db984300799d540adc961935</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Generate Incidents</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Discovery Admin" source="x_qune_da">6a926b7edb144300799d540adc961933</sys_package>
+        <sys_policy>protected</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Discovery Admin">6a926b7edb144300799d540adc961933</sys_scope>
+        <sys_update_name>sys_ui_action_5f24f057db984300799d540adc961935</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-12 16:10:16</sys_updated_on>
+        <table>x_qune_da_troubleshooting</table>
+        <ui11_compatible>true</ui11_compatible>
+        <ui16_compatible>false</ui16_compatible>
+    </sys_ui_action>
+</record_update>

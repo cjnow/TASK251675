@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <application display_value="Discovery Admin">82e8e493db984300799d540adc96199d</application>
+        <assessment/>
+        <content_page/>
+        <device_type/>
+        <filter table="x_qune_da_log_analysis">sys_created_onONLast 7 days@javascript:gs.daysAgoStart(7)@javascript:gs.daysAgoEnd(0)^EQ<item endquery="false" field="sys_created_on" goto="false" newquery="false" operator="ON" or="false" value="Last 7 days@javascript:gs.daysAgoStart(7)@javascript:gs.daysAgoEnd(0)"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter>
+        <hint/>
+        <homepage/>
+        <image/>
+        <link_type>LIST</link_type>
+        <map_page/>
+        <mobile_title>Log Analysis</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name>x_qune_da_log_analysis</name>
+        <order>710</order>
+        <override_menu_roles>false</override_menu_roles>
+        <query/>
+        <report/>
+        <roles>x_qune_da.customer_admin,x_qune_da.customer_user,x_qune_da.quicknexus_admin</roles>
+        <survey/>
+        <survey_overwrite>true</survey_overwrite>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-04 19:02:47</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>8c50bffedb144300799d540adc961917</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Log Analysis</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Discovery Admin" source="x_qune_da">6a926b7edb144300799d540adc961933</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Discovery Admin">6a926b7edb144300799d540adc961933</sys_scope>
+        <sys_update_name>sys_app_module_8c50bffedb144300799d540adc961917</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-13 14:40:59</sys_updated_on>
+        <timeline_page/>
+        <title>Log Analysis</title>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+        <window_name/>
+    </sys_app_module>
+</record_update>

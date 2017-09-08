@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sysevent_script_action">
+    <sysevent_script_action action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition_script/>
+        <description/>
+        <event_name>x_qune_da.execute_analysis</event_name>
+        <name>execute_analysis</name>
+        <order>100</order>
+        <script><![CDATA[gs.info("*************** execute_analysis Script Action is triggered ****************");
+
+var siExecuteAnalysisSA = new x_qune_da.utilQuickNexusDiscovery(); // UPDATE Instance Name
+var strSysIDSA = current.sys_id;
+var strDiscoveryStatusSA = event.parm1;
+
+var objExecuteAnalysisSA = siExecuteAnalysisSA.copyDiscoveryLog(strSysIDSA,strDiscoveryStatusSA);
+
+var strResponseSA = objExecuteAnalysisSA.toString();
+	// gs.addInfoMessage("strResponseSA: " + strResponseSA);
+	current.setValue('status',strResponseSA);
+	// current.setValue('status','analysis_executed');
+	current.update();
+	// action.setRedirectURL(current);
+// GlideList2.get("x_qune_da_troubleshooting").refresh(); // UPDATE Instance Name
+// GlideList2 was giving an error in the system logs. So once most things have stabalized, revisit this to uncomment and see how the form can be automatically refreshed.]]></script>
+        <synchronous>false</synchronous>
+        <sys_class_name>sysevent_script_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-05 18:15:14</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>49be60d3db984300799d540adc961938</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>execute_analysis</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Discovery Admin" source="x_qune_da">6a926b7edb144300799d540adc961933</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Discovery Admin">6a926b7edb144300799d540adc961933</sys_scope>
+        <sys_update_name>sysevent_script_action_49be60d3db984300799d540adc961938</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-05 18:15:14</sys_updated_on>
+    </sysevent_script_action>
+</record_update>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-12 03:12:49</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>40932151db68c300799d540adc9619cf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>utilQuickNexusDiscovery.x_qune_da.customer_user</sys_name>
+        <sys_package display_value="Discovery Admin" source="x_qune_da">6a926b7edb144300799d540adc961933</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Discovery Admin">6a926b7edb144300799d540adc961933</sys_scope>
+        <sys_security_acl display_value="utilQuickNexusDiscovery">9063ad11db68c300799d540adc96193a</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_40932151db68c300799d540adc9619cf</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-12 03:12:49</sys_updated_on>
+        <sys_user_role display_value="x_qune_da.customer_user" name="x_qune_da.customer_user">c7fbc1d5db28c300799d540adc9619fe</sys_user_role>
+        <transaction_id/>
+    </sys_security_acl_role>
+</record_update>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="x_qune_da_error_code">
+    <x_qune_da_error_code action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <discovery_phase>phase_4</discovery_phase>
+        <error_code>P4.WMI.02</error_code>
+        <remediation>Windows credential in ServiceNow should be in the format "domain/user" to be able to run powershell scripts.</remediation>
+        <root_cause>Windows credential is correctly captured in ServiceNow, but its not in required format.</root_cause>
+        <sys_class_name>x_qune_da_error_code</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-28 03:14:22</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>a60d3fdedbf00b00799d540adc9619e5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>P4.WMI.02</sys_name>
+        <sys_package display_value="Discovery Admin" source="x_qune_da">6a926b7edb144300799d540adc961933</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Discovery Admin">6a926b7edb144300799d540adc961933</sys_scope>
+        <sys_update_name>x_qune_da_error_code_a60d3fdedbf00b00799d540adc9619e5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-28 03:14:22</sys_updated_on>
+        <team_responsible>ServiceNow Support Team</team_responsible>
+    </x_qune_da_error_code>
+</record_update>

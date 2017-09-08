@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="x_qune_da_error_code">
+    <x_qune_da_error_code action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <discovery_phase>phase_2</discovery_phase>
+        <error_code>P2.SNMP.02</error_code>
+        <remediation>If the Device is in scope for Discovery: &#13;
+1. Configure SNMP System OID and associate it with corresponding SNMP Classfier.&#13;
+2. If SNMP Classifier is not configured, configure SNMP Classifier, configure SNMP System OID and associate it with the corresponding SNMP Classifier. </remediation>
+        <root_cause>Classification error on SNMP Device due to: &#13;
+1. SNMP System OID not created and associated with the corresponding SNMP Classifier.&#13;
+2. SNMP Classifier not configured and associated with the corresponding SNMP System OID.</root_cause>
+        <sys_class_name>x_qune_da_error_code</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-06 20:32:00</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>853696a7dbdc4300799d540adc96192a</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>P2.SNMP.02</sys_name>
+        <sys_package display_value="Discovery Admin" source="x_qune_da">6a926b7edb144300799d540adc961933</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Discovery Admin">6a926b7edb144300799d540adc961933</sys_scope>
+        <sys_update_name>x_qune_da_error_code_853696a7dbdc4300799d540adc96192a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-06 20:41:34</sys_updated_on>
+        <team_responsible>ServiceNow Support Team</team_responsible>
+    </x_qune_da_error_code>
+</record_update>

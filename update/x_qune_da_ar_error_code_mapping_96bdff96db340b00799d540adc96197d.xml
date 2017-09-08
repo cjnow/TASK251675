@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="x_qune_da_ar_error_code_mapping">
+    <x_qune_da_ar_error_code_mapping action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <automation_category>quicknexus</automation_category>
+        <description>Windows credentual in SN should be in format "domain/user"</description>
+        <error_code display_value="P4.WMI.02">a60d3fdedbf00b00799d540adc9619e5</error_code>
+        <name>User Impersonation - Active Connection</name>
+        <order>7200</order>
+        <source>discovery_log_source=Discovery^ecc_queue_topic=MultiProbe^discovery_log_messageLIKEimpersonation of user  failed.^ecc_queue_name=Windows - Application Dependency Mapping</source>
+        <sys_class_name>x_qune_da_ar_error_code_mapping</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-28 03:16:39</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>96bdff96db340b00799d540adc96197d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>User Impersonation - Active Connection</sys_name>
+        <sys_package display_value="Discovery Admin" source="x_qune_da">6a926b7edb144300799d540adc961933</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Discovery Admin">6a926b7edb144300799d540adc961933</sys_scope>
+        <sys_update_name>x_qune_da_ar_error_code_mapping_96bdff96db340b00799d540adc96197d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-28 03:16:39</sys_updated_on>
+        <target>error_code</target>
+        <value>P4.WMI.02</value>
+    </x_qune_da_ar_error_code_mapping>
+</record_update>

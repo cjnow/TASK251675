@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_qune_da.utilQuickNexusDiscovery</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>utilQuickNexusDiscovery</name>
+        <script><![CDATA[var utilQuickNexusDiscovery = Class.create();
+utilQuickNexusDiscovery.prototype = {
+	
+	// ------- FUNCTION SEPARATOR -------
+	
+	initialize: function() {
+		
+	},
+
+	// ------- FUNCTION SEPARATOR -------
+	
+	copyDiscoveryLog : function(strSysID,strDiscoveryStatus) {
+		
+		// Placeholder code in progress
+		
+		var arrDiscoveryStatus = []; // Array of Discovery Status entries
+		arrDiscoveryStatus = strDiscoveryStatus.split(",");
+
+		// resume with for loop on line 29 in legacy code.
+
+		var intLoopDiscoveryStatus;
+		
+		for (intLoopDiscoveryStatus = 0; intLoopDiscoveryStatus < arrDiscoveryStatus.length; intLoopDiscoveryStatus++) { // For Each selected Discovery Status
+			
+			var grDiscoveryLog = new GlideRecord('discovery_log'); // Q: Should this be inside or outside the loop?
+			
+			grDiscoveryLog.addQuery('status',arrDiscoveryStatus[intLoopDiscoveryStatus]);
+			grDiscoveryLog.addQuery('level','!=','0');
+			grDiscoveryLog.addQuery('device_history','!=',''); // 2017-08-08: Discussed with Neel and decided we should keep the filter for now and reassess with Patterns in the future. 
+			grDiscoveryLog.query();
+			
+			while (grDiscoveryLog.next()) {
+				
+				var grDiscoveryLogAnalysis = new GlideRecord('x_qune_da_log_analysis'); // UPDATE Instance Reference
+				
+				grDiscoveryLogAnalysis.initialize();
+				
+				// NOTE: Core Attributes
+				// grDiscoveryLogAnalysis.error_code = [Result from Query Filter];
+				grDiscoveryLogAnalysis.troubleshooting = strSysID; // SysID of Discovery Troubleshooting Record that triggered the UI Action, which triggered the Script Action which called the Script Include
+				// grDiscoveryLogAnalysis.incident_error_code = [Result from Query Filter];
+				// grDiscoveryLogAnalysis.ai_error_code = [Result from Artificial Intelligence Engine];
+				
+				grDiscoveryLogAnalysis.discovery_schedule_location = grDiscoveryLog.status.dscheduler.location; // Taking this directly from Discovery Log, not via Device History - displayed on the top of the Form.
+				
+				// Section: Discovery Log
+				grDiscoveryLogAnalysis.discovery_log_source = grDiscoveryLog.source;
+				grDiscoveryLogAnalysis.discovery_log_level = grDiscoveryLog.level;
+				grDiscoveryLogAnalysis.discovery_log_created = grDiscoveryLog.sys_created_on;
+				grDiscoveryLogAnalysis.discovery_log_result_code = grDiscoveryLog.result_code;
+				grDiscoveryLogAnalysis.discovery_log_message = grDiscoveryLog.message;
+				grDiscoveryLogAnalysis.discovery_log_help = grDiscoveryLog.help;
+				
+				// Section: Device
+				grDiscoveryLogAnalysis.device_ip_address = grDiscoveryLog.device_history.source;
+				grDiscoveryLogAnalysis.device_ip_address_number = this.calculateIPAddressNumber(grDiscoveryLog.device_history.source); // Calculated Attribute
+				grDiscoveryLogAnalysis.device_dns_name = grDiscoveryLog.device_history.dns_name;				
+				grDiscoveryLogAnalysis.device_name = grDiscoveryLog.device_history.cmdb_ci;
+				grDiscoveryLogAnalysis.device_class = grDiscoveryLog.device_history.classified_as;
+				grDiscoveryLogAnalysis.device_issues_link = grDiscoveryLog.device_history.issues_link;
+				grDiscoveryLogAnalysis.device_issues = grDiscoveryLog.device_history.issues;
+				grDiscoveryLogAnalysis.device_scan_status = grDiscoveryLog.device_history.scan_status;
+				grDiscoveryLogAnalysis.device_scan_completed_activity = grDiscoveryLog.device_history.last_state;
+				grDiscoveryLogAnalysis.device_scan_started = grDiscoveryLog.device_history.started;
+				grDiscoveryLogAnalysis.device_scan_completed = grDiscoveryLog.device_history.completed;
+				grDiscoveryLogAnalysis.device_discovery_status = grDiscoveryLog.device_history.status;
+				
+				// Section: ECC Queue
+				grDiscoveryLogAnalysis.ecc_queue_topic = grDiscoveryLog.sensor.topic;
+				grDiscoveryLogAnalysis.ecc_queue_name = grDiscoveryLog.sensor.name;
+				grDiscoveryLogAnalysis.ecc_queue_agent = grDiscoveryLog.sensor.agent;
+				grDiscoveryLogAnalysis.ecc_queue_agent_correlator = grDiscoveryLog.sensor.agent_correlator; 
+				grDiscoveryLogAnalysis.ecc_queue_source = grDiscoveryLog.sensor.source;
+				grDiscoveryLogAnalysis.ecc_queue_created = grDiscoveryLog.sensor.sys_created_on;
+				grDiscoveryLogAnalysis.ecc_queue_sequence = grDiscoveryLog.sensor.sequence;
+				grDiscoveryLogAnalysis.ecc_queue_processed = grDiscoveryLog.sensor.processed;
+				grDiscoveryLogAnalysis.ecc_queue_priority = grDiscoveryLog.sensor.priority;
+				grDiscoveryLogAnalysis.ecc_queue_response_to = grDiscoveryLog.sensor.response_to;
+				grDiscoveryLogAnalysis.ecc_queue_type = grDiscoveryLog.sensor.queue;
+				grDiscoveryLogAnalysis.ecc_queue_state = grDiscoveryLog.sensor.state;
+				grDiscoveryLogAnalysis.ecc_queue_payload = grDiscoveryLog.sensor.payload;
+				
+				grDiscoveryLogAnalysis.insert();
+				
+			} // while grDiscoveryLog Loop
+			
+		} // for intLoopDiscoveryStatus Loop
+
+		return 'analysis_executed';
+		
+	}, // copyDiscoveryLog(strSysID,strDiscoveryStatus)
+	
+	// ------- FUNCTION SEPARATOR -------
+	
+	calculateAttribute : function(currentRecord,sourceTableName) {
+		
+		// gs.addInfoMessage("sourceTableName: " + sourceTableName + "-" + currentRecord);
+		
+		var grCalculateAttribute = new GlideRecord(sourceTableName);
+		grCalculateAttribute.addActiveQuery();
+		grCalculateAttribute.orderBy('order');
+		grCalculateAttribute.query();
+		
+		while (grCalculateAttribute.next()) { 
+			
+			var strTargetAttribute = grCalculateAttribute.getValue('target'); // Field Name on current that needs to be populated
+			var strTargetValue = grCalculateAttribute.getValue('value'); // Value to populate the Field Name on current
+			var strQueryString = grCalculateAttribute.getValue('source'); // Query String on current
+			
+			var gfMatch = GlideFilter.checkRecord(currentRecord,strQueryString);
+			if (gfMatch) {
+				currentRecord.setValue(strTargetAttribute,strTargetValue);
+				// currentRecord.setDisplayValue(strTargetAttribute,strTargetValue);
+			} // if (gfMatch)
+			
+		} // while (grTypeOneAutomationRule.next())
+		
+	}, // typeOneAutomationRule(currentRecord)
+	
+	// ------- FUNCTION SEPARATOR -------
+	
+	calculateIPAddressNumber : function(strIPAddress) {
+		
+		var intIPAddressNumber = 0;
+		var arrIPAddress = strIPAddress.split('.');
+		
+		if (arrIPAddress.length == 4) {
+			intIPAddressNumber = Number(arrIPAddress[0])*256*256*256;
+			intIPAddressNumber += Number(arrIPAddress[1])*256*256;
+			intIPAddressNumber += Number(arrIPAddress[2])*256;
+			intIPAddressNumber += Number(arrIPAddress[3]);
+		}
+		
+		return intIPAddressNumber;
+		
+	},
+	
+	// ------- FUNCTION SEPARATOR -------
+	
+type: 'utilDiscoveryAccelerator'
+	
+	// ------- FUNCTION SEPARATOR -------
+	
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-05 18:02:35</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>f27ba4d3db984300799d540adc961950</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>utilQuickNexusDiscovery</sys_name>
+        <sys_package display_value="Discovery Admin" source="x_qune_da">6a926b7edb144300799d540adc961933</sys_package>
+        <sys_policy>protected</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Discovery Admin">6a926b7edb144300799d540adc961933</sys_scope>
+        <sys_update_name>sys_script_include_f27ba4d3db984300799d540adc961950</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-08 19:34:33</sys_updated_on>
+    </sys_script_include>
+</record_update>

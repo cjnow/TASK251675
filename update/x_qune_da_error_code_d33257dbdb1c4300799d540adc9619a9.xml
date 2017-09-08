@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="x_qune_da_error_code">
+    <x_qune_da_error_code action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <discovery_phase>phase_1</discovery_phase>
+        <error_code>P1.ALL.01</error_code>
+        <remediation>Troubleshooting steps should be followed in the order given below: &#13;
+1. For SNMP Devices: &#13;
+1.1. Ensure that SNMP is enabled on the Device.&#13;
+1.2. Configure ACL on SNMP Device to allow connections from IP Addresses of all the configured ServiceNow MID Server Hosts.&#13;
+1.3. Work with the ServiceNow Team to validate the Device Credentials are stored in ServiceNow.&#13;
+1.4. Work with the Network Team to update Network Firewall rules / policies to allow SNMP traffic between the MID Server and the Device.&#13;
+2. For other Devices: &#13;
+2.1. Enable the Device to accept connections on the port being probed by the Shazzam Port Probe.&#13;
+2.2. Work with the Network Team to update Network Firewall rules / policies to allow WMI / SSH traffic between the MID Server and the Device.&#13;
+2.3. Device has non-standard port configurations. It is not being detected by the out-of-the-box ServiceNow Shazzam Probe. Work with the ServiceNow Team to configure a custom Port Probe with the applicable IP Services, if Device is in scope for Discovery.</remediation>
+        <root_cause>Device is not accepting connections on the port being probed by the Shazzam Port Probe.</root_cause>
+        <sys_class_name>x_qune_da_error_code</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-06 06:09:41</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>d33257dbdb1c4300799d540adc9619a9</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>P1.ALL.01</sys_name>
+        <sys_package display_value="Discovery Admin" source="x_qune_da">6a926b7edb144300799d540adc961933</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Discovery Admin">6a926b7edb144300799d540adc961933</sys_scope>
+        <sys_update_name>x_qune_da_error_code_d33257dbdb1c4300799d540adc9619a9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-06 19:56:59</sys_updated_on>
+        <team_responsible>Device Support Team</team_responsible>
+    </x_qune_da_error_code>
+</record_update>

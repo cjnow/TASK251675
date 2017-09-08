@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element attributes="update_synch=true" extends="x_qune_da_automation_rule" label="AR-Incident Error Code Mapping" max_length="40" name="x_qune_da_ar_incident_error_code_mapping" type="collection">
+        <element label="Incident Error Code" mandatory="true" max_length="32" name="incident_error_code" reference="x_qune_da_incident_error_code" type="reference"/>
+        <index name="index">
+            <element name="incident_error_code"/>
+        </index>
+    </element>
+</database>

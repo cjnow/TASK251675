@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="x_qune_da_error_code">
+    <x_qune_da_error_code action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <discovery_phase>phase_4</discovery_phase>
+        <error_code>P4.APPI.11.HBase</error_code>
+        <remediation>Allow access to base-site.xml</remediation>
+        <root_cause>Access restricted to base-site.xml</root_cause>
+        <sys_class_name>x_qune_da_error_code</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-08-27 06:25:06</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>f73f5f8edb300b00799d540adc96198d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>P4.APPI.11.HBase</sys_name>
+        <sys_package display_value="Discovery Admin" source="x_qune_da">6a926b7edb144300799d540adc961933</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Discovery Admin">6a926b7edb144300799d540adc961933</sys_scope>
+        <sys_update_name>x_qune_da_error_code_f73f5f8edb300b00799d540adc96198d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-08-27 06:25:06</sys_updated_on>
+        <team_responsible>HBase DB Administrator</team_responsible>
+    </x_qune_da_error_code>
+</record_update>

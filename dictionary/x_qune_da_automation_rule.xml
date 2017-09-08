@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element attributes="update_synch=true" extends="sys_metadata" label="AR-Automation Rule (Parent Table)" max_length="40" name="x_qune_da_automation_rule" type="collection">
+        <element hint="Determines if this record is Active or not." label="Active" max_length="40" name="active" type="boolean"/>
+        <element choice="1" hint="Determines if the Automation Rules are captured independently by QuickNexus, collaboratively by QuickNexus and the Customer, or independently by the Customer." label="Automation Category" mandatory="true" max_length="40" name="automation_category" type="choice">
+            <choice>
+                <element label="QuickNexus" sequence="10" value="quicknexus"/>
+                <element label="QuickNexus + Customer" sequence="20" value="quicknexus_customer"/>
+                <element label="Customer" sequence="30" value="customer"/>
+            </choice>
+        </element>
+        <element hint="Captures additional information about this Automation Rule." label="Description" mandatory="true" max_length="4000" name="description" type="string"/>
+        <element display="true" hint="Captures the Name of this Automation Rule." label="Name" mandatory="true" max_length="100" name="name" type="string"/>
+        <element hint="Captures the order of execution of this Automation Rule." label="Order" mandatory="true" max_length="40" name="order" type="integer"/>
+        <element hint="Captures the source Query String." label="Source" mandatory="true" max_length="4000" name="source" type="string"/>
+        <element hint="Captures the Target Attribute." label="Target" mandatory="true" max_length="100" name="target" type="string"/>
+        <element hint="Captures the Value to be updated." label="Value" mandatory="true" max_length="100" name="value" type="string"/>
+    </element>
+</database>

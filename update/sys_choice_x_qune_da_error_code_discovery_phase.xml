@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="discovery_phase" table="x_qune_da_error_code" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>discovery_phase</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Phase 0: No Ping</label>
+            <language>en</language>
+            <name>x_qune_da_error_code</name>
+            <sequence>10</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-08-05 03:15:32</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>6df02d8fdb944300799d540adc961950</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-08-05 03:15:40</sys_updated_on>
+            <value>phase_0</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>discovery_phase</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Phase 1: Port Scan</label>
+            <language>en</language>
+            <name>x_qune_da_error_code</name>
+            <sequence>20</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-08-05 03:15:57</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d6116d8fdb944300799d540adc9619d2</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-08-05 03:16:10</sys_updated_on>
+            <value>phase_1</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>discovery_phase</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Phase 2: Classification</label>
+            <language>en</language>
+            <name>x_qune_da_error_code</name>
+            <sequence>30</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-08-05 03:16:23</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>dc31e98fdb944300799d540adc96193c</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-08-05 03:16:31</sys_updated_on>
+            <value>phase_2</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>discovery_phase</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Phase 3: Identification</label>
+            <language>en</language>
+            <name>x_qune_da_error_code</name>
+            <sequence>40</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-08-05 03:16:51</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>6641ed07db944300799d540adc9619fe</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-08-05 03:16:58</sys_updated_on>
+            <value>phase_3</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>discovery_phase</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Phase 4: Exploration</label>
+            <language>en</language>
+            <name>x_qune_da_error_code</name>
+            <sequence>50</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-08-05 03:17:09</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>ed61ad8fdb944300799d540adc9619db</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-08-05 03:17:15</sys_updated_on>
+            <value>phase_4</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>discovery_phase</element>
+            <name>x_qune_da_error_code</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-08-05 03:15:32</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>da11214bdb944300799d540adc96191e</sys_id>
+            <sys_mod_count>16</sys_mod_count>
+            <sys_name>discovery_phase</sys_name>
+            <sys_package display_value="Discovery Admin" source="x_qune_da">6a926b7edb144300799d540adc961933</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Discovery Admin">6a926b7edb144300799d540adc961933</sys_scope>
+            <sys_update_name>sys_choice_x_qune_da_error_code_discovery_phase</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-08-05 03:17:15</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

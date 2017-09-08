@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Log Analysis" max_length="40" name="x_qune_da_log_analysis" type="collection">
+        <element hint="(Future Jakarta Functionality)" label="AI Error Code (Future Functionality)" max_length="100" name="ai_error_code" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="Device Class" max_length="100" name="device_class" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="Device Discovery Status" max_length="32" name="device_discovery_status" read_only="true" reference="discovery_status" type="reference"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="Device DNS Name" max_length="100" name="device_dns_name" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="Device IP Address" max_length="100" name="device_ip_address" read_only="true" type="string"/>
+        <element hint="Calculated Number corresponding to IP Address." label="Device IP Address Number" max_length="40" name="device_ip_address_number" read_only="true" type="integer"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="Device Issues" max_length="40" name="device_issues" read_only="true" type="integer"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="Device Issues Link" max_length="255" name="device_issues_link" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="Device Name" max_length="32" name="device_name" read_only="true" reference="cmdb_ci" type="reference"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="Device Scan Completed" max_length="40" name="device_scan_completed" read_only="true" type="integer"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="Device Scan Completed Activity" max_length="100" name="device_scan_completed_activity" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="Device Scan Started" max_length="40" name="device_scan_started" read_only="true" type="integer"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="Device Scan Status" max_length="100" name="device_scan_status" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="Discovery Log Created" max_length="40" name="discovery_log_created" read_only="true" type="glide_date_time"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="Discovery Log Help" max_length="4000" name="discovery_log_help" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="Discovery Log Level" max_length="100" name="discovery_log_level" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="*Discovery Log Message" max_length="4000" name="discovery_log_message" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="Discovery Log Result Code" max_length="40" name="discovery_log_result_code" read_only="true" type="integer"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="*Discovery Log Source" max_length="100" name="discovery_log_source" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="Discovery Schedule Location" max_length="32" name="discovery_schedule_location" read_only="true" reference="cmn_location" type="reference"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="ECC Queue Agent" max_length="120" name="ecc_queue_agent" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="ECC Queue Agent Correlator" max_length="100" name="ecc_queue_agent_correlator" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="ECC Queue Created" max_length="40" name="ecc_queue_created" read_only="true" type="glide_date_time"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="ECC Queue Name" max_length="120" name="ecc_queue_name" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="ECC Queue Payload" max_length="1048576" name="ecc_queue_payload" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="ECC Queue Priority" max_length="100" name="ecc_queue_priority" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="ECC Queue Processed" max_length="40" name="ecc_queue_processed" read_only="true" type="glide_date_time"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="ECC Queue Response To" max_length="100" name="ecc_queue_response_to" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="ECC Queue Sequence" max_length="100" name="ecc_queue_sequence" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="ECC Queue Source" max_length="120" name="ecc_queue_source" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="ECC Queue State" max_length="100" name="ecc_queue_state" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="*ECC Queue Topic" max_length="100" name="ecc_queue_topic" read_only="true" type="string"/>
+        <element hint="Copy of the corresponding out-of-the-box Attribute." label="ECC Queue Type" max_length="100" name="ecc_queue_type" read_only="true" type="string"/>
+        <element hint="Generated Error Code." label="Error Code" max_length="100" name="error_code" read_only="true" type="string"/>
+        <element display="true" hint="Generated Incident Error Code." label="Incident Error Code" max_length="100" name="incident_error_code" read_only="true" type="string"/>
+        <element hint="Reference to Troubleshooting Record." label="Troubleshooting" max_length="32" name="troubleshooting" read_only="true" reference="x_qune_da_troubleshooting" type="reference"/>
+        <index name="index">
+            <element name="device_name"/>
+        </index>
+        <index name="index2">
+            <element name="discovery_schedule_location"/>
+        </index>
+        <index name="index3">
+            <element name="troubleshooting"/>
+        </index>
+        <index name="index4">
+            <element name="device_discovery_status"/>
+        </index>
+    </element>
+</database>
